@@ -1,1 +1,20 @@
-<h1>Welcome</h1>
+<table class="table table-striped">
+  <tr>
+    <th> Name</th>
+    <th> Description</th>
+    <th> Size </th>
+    <th> Price</th>
+    <th> Image</th>
+
+  </tr>
+  <%@products.each do |product| %>
+  <tr>
+    <td><%=product.name%></td>
+    <td><%=product.description%></td>
+    <td><%=product.size%></td>
+    <td><%=product.price%></td>
+    <td><img src=<%=product.image%> class="img-thumbnail" style="width:5em; height:5em;" /></td>
+
+  </tr>
+  <%end%>
+</table>

@@ -1,0 +1,22 @@
+<h1>Welcome and move out in style</h1>
+<table class="table">
+  <tr>
+    <th>Name</th>
+     <th>Description</th>
+     <th>Price</th>
+     <th>Image</th>
+     <th>Edit</th>
+     <th>Delete</th>
+   </tr>
+ <div class="row">
+    <% @products.each do |product| %>
+     <div class="col-md-4">
+       <a href="/products/<%= product.id %>">
+         <img src="<%= product.image %>" width="200" height="200">
+         <p><%= product.name %></p>
+         <p><%= product.price %></p>
+       </a>
+     </div>
+    <% end %>
+ </table> 
+ </div>

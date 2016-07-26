@@ -1,0 +1,12 @@
+<h1>Welcome and move out in style</h1>
+<h3> Product Details </h3>
+
+<img src=<%=@product.image%> class="img-thumbnail" style="width:10em; height:10em;"
+<ul>
+<li>Name: <%=@product.name%></li>
+<li>Description: <%=@product.description%></li>
+<li>Size: <%=@product.size%></li>
+<li>Price: <%=@product.price%></li>
+ </ul>
+ <%= link_to "Edit", "/products/#{@product.id}/edit" %>
+ <%= link_to "Delete", "/products/#{@product.id}", method: :delete %>

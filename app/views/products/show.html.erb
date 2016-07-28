@@ -6,7 +6,10 @@
 <li>Name: <%=@product.name%></li>
 <li>Description: <%=@product.description%></li>
 <li>Size: <%=@product.size%></li>
-<li>Price: <%=@product.price%></li>
+<li>Price: $<%=@product.price%></li>
+<li>Tax: $<%=@product.tax%></li>
+<li>Total: $<%=@product.total%></li>
+<li><%=@product.sale_message%></li>
 </ul>
 <%= link_to "Edit", "/products/#{@product.id}/edit" %>
 <%= link_to "Delete", "/products/#{@product.id}", method: :delete%>

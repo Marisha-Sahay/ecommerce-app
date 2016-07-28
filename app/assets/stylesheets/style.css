@@ -2,6 +2,12 @@ body {
   font-family: 'Indie Flower', cursive;
   background: url("pink_rice.png");
 }
+
+class="navbar-text"
+{
+  font-family: 'Indie Flower', cursive;
+  color: red;
+}
 /*label {
   display: inline-block;
   width: 140px;

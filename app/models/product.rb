@@ -9,12 +9,11 @@ class Product < ApplicationRecord
   end
 
   def tax
-    tax = (price.to_f * 9)/100
-    return tax
+    price.to_f * 0.09
   end
 
   def total
-    return self.tax + price.to_f
+    tax + price.to_f
   end
 
 end

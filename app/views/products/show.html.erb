@@ -3,13 +3,13 @@
 <!-- <img src="<%= @product.image %>" width="200" height="200"> -->
 <img src=<%=@product.image%> class="img-thumbnail" style="width:10em; height:10em;"
 <ul>
-<li>Name: <%=@product.name%></li>
-<li>Description: <%=@product.description%></li>
-<li>Size: <%=@product.size%></li>
-<li>Price: $<%=@product.price%></li>
-<li>Tax: $<%=@product.tax%></li>
-<li>Total: $<%=@product.total%></li>
-<li><%=@product.sale_message%></li>
+  <li>Name: <%=@product.name%></li>
+  <li>Description: <%=@product.description%></li>
+  <li>Size: <%=@product.size%></li>
+  <li>Price: $<%=number_to_currency(@product.price)%></li>
+  <li>Tax: <%=number_to_currency(@product.tax)%></li>
+  <li>Total: <%=number_to_currency(@product.total)%></li>
+  <li><%=@product.sale_message%></li>
 </ul>
 <%= link_to "Edit", "/products/#{@product.id}/edit" %>
 <%= link_to "Delete", "/products/#{@product.id}", method: :delete%>

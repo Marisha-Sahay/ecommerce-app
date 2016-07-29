@@ -1,7 +1,14 @@
     class ProductsController < ApplicationController
 
       def index
-        @products = Product.all
+        sort_price = params[:sort_price]
+        if sort_price == 'ASC'
+          @products = Product.order(:price)
+        elsif sort_price == 'DESC'
+          @products = Product.order(price: :desc)
+        else
+          @products = Product.all
+        end
       end
 
       def show
@@ -46,4 +53,4 @@
         redirect_to "/products"
       end
 
-      end
+    end

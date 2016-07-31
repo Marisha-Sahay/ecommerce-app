@@ -1,10 +1,10 @@
 class Product < ApplicationRecord
 
   def sale_message
-    if price.to_f < 2
-      return "Discount item!"
+    if price.to_i < 15
+      return "discount_item"
     else
-      return "On Sale!"
+      return "On Sale!!!"
     end
   end
 
@@ -16,4 +16,4 @@ class Product < ApplicationRecord
     tax + price.to_f
   end
 
-end
+ end

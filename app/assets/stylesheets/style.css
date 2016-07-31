@@ -83,3 +83,7 @@ class="navbar-text"
     background-color: #8e44ad;
   }
 }
+
+.discount_item{
+  color: red;
+}

@@ -6,10 +6,12 @@
   <li>Name: <%=@product.name%></li>
   <li>Description: <%=@product.description%></li>
   <li>Size: <%=@product.size%></li>
-  <li>Price: $<%=number_to_currency(@product.price)%></li>
+  <li class="<%= @product.sale_message %>">Price: <%= number_to_currency(@product.price) %></li>
   <li>Tax: <%=number_to_currency(@product.tax)%></li>
   <li>Total: <%=number_to_currency(@product.total)%></li>
   <li><%=@product.sale_message%></li>
 </ul>
+
 <%= link_to "Edit", "/products/#{@product.id}/edit" %>
+<%= link_to "Surprise Item", "/products/#{@rid}" %>
 <%= link_to "Delete", "/products/#{@product.id}", method: :delete%>

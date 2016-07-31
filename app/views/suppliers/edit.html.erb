@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <h1>Update Supplier</h1>
+<%= form_tag "/suppliers/#{@supplier.id}", method: :patch do%>
+<form class="form-horizontal">
+<div class="form-group">
+<%= label_tag :name%>
+<%= text_field_tag :name, @supplier.name, class:"form-control"%>
+</div>
+<div class="form-group">
+        <%= label_tag :email %>
+        <%= text_field_tag :email, @supplier.email, class: "form-control" %>
+      </div>
+<div class="form-group">
+<%= label_tag :phone%>
+<%= text_field_tag :phone, @supplier.phone, class: "form-control"%>
+</div>
+<div class="form-group">
+<%= submit_tag "Update Record"%>
+</div>
+</form>
+
+<%end%>

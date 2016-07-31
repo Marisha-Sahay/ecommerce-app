@@ -5,6 +5,7 @@
 <ul>
   <li>Name: <%=@product.name%></li>
   <li>Description: <%=@product.description%></li>
+  <li>Supplier: <%=@product.supplier.name%></li>
   <li>Size: <%=@product.size%></li>
   <li class="<%= @product.sale_message %>">Price: <%= number_to_currency(@product.price) %></li>
   <li>Tax: <%=number_to_currency(@product.tax)%></li>

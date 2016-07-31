@@ -1,0 +1,19 @@
+<h1>List of all Suppliers</h1>
+<table class="table table-bordered">
+  <tr>
+    <td> Name </td>
+    <td> Email </td>
+    <td> Phone </td>
+  </tr>
+  <% @suppliers.each do |supplier| %>
+  <div class="col-md-4">
+    <tr>
+     <a href="/suppliers/<%= supplier.id %>">
+      <td><%= supplier.name %></td>
+      <td><%= supplier.email %></td>
+      <td><%= supplier.phone %></td>
+    </a>
+  </div>
+</tr>
+<% end %>
+</table> 

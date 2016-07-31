@@ -24,13 +24,15 @@ class ProductsController < ApplicationController
 
   def create
     name = params[:name]
-    description = params[:description]
     price = params[:price]
-    size = params[:size]
-    image = params[:image]
-    product = Product.new(name: name,description: description,price: price,size: size,image: image)
-    product.save 
-    flash[:success] = "Product created"
+    description = params[:description]
+    image_url = params[:image]
+    product = Product.new(name: name, price: price, description: description, supplier_id: params[:supplier][:supplier_id])
+    if product.save
+      image = Image.new(product_id: product.id, url: image_url)
+      image.save
+    end
+    flash[:success] = "Product Created!!!!!"
     redirect_to "/products/#{product.id}"
   end
 
@@ -45,7 +47,6 @@ class ProductsController < ApplicationController
     product.description = params[:description]
     product.price = params[:price]
     product.size = params[:size]
-    product.image = params[:image]
     product.save
     flash[:success] = "Product updated"
     redirect_to "/products/#{product.id}"

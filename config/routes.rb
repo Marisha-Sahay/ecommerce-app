@@ -17,4 +17,8 @@
     get '/suppliers/:id/edit', to: 'suppliers#edit'
     patch '/suppliers/:id', to: 'suppliers#update'
     delete 'suppliers/:id',to: 'suppliers#destroy'
+
+    #images routes
+    get '/images/new', to: 'images#new'
+    post '/images', to: 'images#create'
 end

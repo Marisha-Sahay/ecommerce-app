@@ -3,7 +3,7 @@
   <% @products.each do |product| %>
   <div class="col-md-4">
    <a href="/products/<%= product.id %>">
-     <img src="<%= product.image %>" width="200" height="200">
+     <img src="<%= product.images.first.url if product.images.any? %>" width="200" height="200">
      <p><%= product.name %></p>
      <p><%= product.price %></p>
    </div>

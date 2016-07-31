@@ -1,7 +1,8 @@
 <h1>Welcome and move out in style</h1>
 <h3> Product Details </h3>
-<!-- <img src="<%= @product.image %>" width="200" height="200"> -->
-<img src=<%=@product.image%> class="img-thumbnail" style="width:10em; height:10em;"
+<% @product.images.each do |image| %>
+<img src="<%=image.url%>"" class="img-thumbnail" style="width:10em; height:10em;">
+<%end%>
 <ul>
   <li>Name: <%=@product.name%></li>
   <li>Description: <%=@product.description%></li>

@@ -21,4 +21,14 @@
     #images routes
     get '/images/new', to: 'images#new'
     post '/images', to: 'images#create'
+
+    #user routes
+    get '/users/signup', to: 'users#new'
+    post '/users', to: 'users#create'
+
+    #session routes
+    get '/login', to: 'sessions#new'
+    post '/login', to: 'sessions#create'
+    get '/logout', to: 'sessions#destroy'
+
 end

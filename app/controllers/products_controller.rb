@@ -31,9 +31,12 @@ class ProductsController < ApplicationController
     if product.save
       image = Image.new(product_id: product.id, url: image_url)
       image.save
+    redirect_to "/products/#{product.id}"
+    else
+      flash[:danger] = "Product not created!!!!!"
+      redirect_to "products/new"
     end
     flash[:success] = "Product Created!!!!!"
-    redirect_to "/products/#{product.id}"
   end
 
   def edit
@@ -63,6 +66,4 @@ class ProductsController < ApplicationController
     @products = Product.where("name LIKE ? OR description LIKE ?", "%#{params[:user_search]}%", "%#{params[:user_search]}%")
     render :index
   end
-
-
 end

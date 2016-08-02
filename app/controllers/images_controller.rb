@@ -4,12 +4,11 @@ class ImagesController < ApplicationController
   end
 
   def create
-    url = params[:url]
-    product_id = params[:product_id]
-    img = Image.new(url: url, product_id:product_id)
-    img.save
-    flash[:success] = "Product created"
-    redirect_to "/products/#{img.product.id}"
+    image_url = params[:url]
+    image = Image.new(url: image_url, product_id: params[:product][:product_id])
+    image.save
+    flash[:success] = "Image created"
+    redirect_to "/products/#{image.product_id}"
   end
 
 end

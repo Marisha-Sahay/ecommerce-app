@@ -3,23 +3,24 @@
   <div class="col-md-6">
 <h1>User signup</h1>
 <%= form_tag '/users', method: :post do %>
-
-<div>
+<form class="form-horizontal">
+<div class="form-group">
 <%=label_tag :name %>
-<%=text_field_tag :name %>
+<%=text_field_tag :name, "", class:"form-control" %>
 </div>
-<div>
+<div class="form-group">
 <%=label_tag :email %>
-<%=text_field_tag :email %>
+<%=text_field_tag :email, "", class:"form-control" %>
 </div>
-<div>
+<div class="form-group">
 <%=label_tag :password %>
-<%=text_field_tag :password %>
+<%=text_field_tag :password, "", class:"form-control" %>
 </div>
-<div>
+<div class="form-group">
 <%=label_tag :password_confirmation %>
-<%=text_field_tag :password_confirmation %>
+<%=text_field_tag :password_confirmation, "", class:"form-control"  %>
 </div>
 
 <%= submit_tag "Submit" %>
 <% end %>
+</form>

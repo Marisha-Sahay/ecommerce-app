@@ -1,0 +1,14 @@
+<h1>Welcome and move out in style</h1>
+<h3> Order Details </h3>
+<% if @order.product.images.first%>
+<img src="<%=@order.product.images.first.url%>"" class="img-thumbnail" style="width:10em; height:10em;">
+<%end%>
+<ul>
+  <li>Name: <%=@order.product.name%></li>
+  <li>Description: <%=@order.product.description%></li>
+  <li>Quantity: <%=@order.quantity%></li>
+  <li>Subtotal: <%=number_to_currency(@order.subtotal)%></li>
+  <li>Tax: <%=number_to_currency(@order.tax)%></li>
+  <li>Total: <%=number_to_currency(@order.total)%></li>
+  <li>Email: <%=@order.user.email%>
+</ul>

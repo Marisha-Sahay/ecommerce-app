@@ -32,7 +32,6 @@
     delete '/logout', to: 'sessions#destroy'
 
     #Orders routes
-    get '/orders/new', to: 'orders#new'
     post '/orders', to: 'orders#create'
     get '/orders/:id', to: 'orders#show'
 

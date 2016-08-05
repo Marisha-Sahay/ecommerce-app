@@ -2,6 +2,10 @@ class Product < ApplicationRecord
 belongs_to :supplier
 has_many :images
 has_many :orders
+has_many :categorized_products
+has_many :categories, through: :categorized_products
+
+TAXRATE = 0.09
 
   def sale_message
     if price.to_i < 15
@@ -12,7 +16,7 @@ has_many :orders
   end
 
   def tax
-    price.to_f * 0.09
+    price.to_i * TAXRATE
   end
 
   def total

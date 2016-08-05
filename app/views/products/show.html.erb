@@ -11,18 +11,22 @@
   <li class="<%= @product.sale_message %>">Price: <%= number_to_currency(@product.price) %></li>
   <li>Tax: <%=number_to_currency(@product.tax)%></li>
   <li>Total: <%=number_to_currency(@product.total)%></li>
+  <li>Categories:</li>
+  <% @product.categories.each do |category|%>
+  <ul><%=category.name.capitalize%></ul>
+  <%end%>
   <li><%=@product.sale_message%></li>
 </ul>
 
 <%= link_to "Edit", "/products/#{@product.id}/edit" %>
-<%= link_to "Surprise Item", "/products/#{@rid}" %>
 <%= link_to "Delete", "/products/#{@product.id}", method: :delete%>
 <%= link_to "Add image", "/images/new" %>
+<%= link_to "Surprise Item", "/products/random" %>
 <%= form_tag "/orders", method: :post do%>
-<form class="form-horizontal">
-<div class="form-group">
+
+<div>
 <%= label_tag :quantity%>
-<%= text_field_tag :quantity, "", class:"form-control"%>
+<%= text_field_tag :quantity%>
 </div>
 <div>
 <%= hidden_field_tag :product_id, "#{@product.id}" %>
@@ -30,6 +34,6 @@
 <div class="form-group">
 <%= submit_tag "Buy Now"%>
 </div>
-</form>
+
 
 <%end%>

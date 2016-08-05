@@ -4,6 +4,8 @@
 <img src="<%=@order.product.images.first.url%>"" class="img-thumbnail" style="width:10em; height:10em;">
 <%end%>
 <ul>
+  <li>Order #:<%= @order.id %></li>
+  <li>Ordered At: <%= human_date_and_time(@order.created_at) %></li>
   <li>Name: <%=@order.product.name%></li>
   <li>Description: <%=@order.product.description%></li>
   <li>Quantity: <%=@order.quantity%></li>

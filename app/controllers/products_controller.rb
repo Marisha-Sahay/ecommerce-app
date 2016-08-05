@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
       @products = Product.order(price: params[:sort])
     elsif params[:discount]
       @products = Product.where("price < ?", 15)
+    elsif params[:category_id]
+      @products = Category.find_by(id: params[:category_id]).products
     else
       @products = Product.all
     end
@@ -27,7 +29,9 @@ class ProductsController < ApplicationController
     price = params[:price]
     description = params[:description]
     image_url = params[:image]
-    product = Product.new(name: name, price: price, description: description, supplier_id: params[:supplier][:supplier_id])
+    size = params[:size]
+    product = Product.new(name: name, price: price, description: description, supplier_id: params[:supplier][:supplier_id],size: size)
+    binding.pry
     if product.save
       image = Image.new(product_id: product.id, url: image_url)
       image.save

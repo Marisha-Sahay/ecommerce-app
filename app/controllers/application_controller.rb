@@ -11,6 +11,13 @@
       date.strftime("%b %e, %l:%M %p")
     end
 
-    
+    def authenticate_admin!
+      if current_user && current_user.admin
+        #do nothing
+      else
+        flash[:danger] = "Get out of here hacker!"
+        redirect_to "/"
+      end
+    end
 
   end

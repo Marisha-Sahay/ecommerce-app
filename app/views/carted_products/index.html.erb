@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <table class="table info-background">
+      <tr>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price Per Product</th>
+        <th>Delete Product(s)</th>
+      </tr>
+        <% @order.carted_products.each do |carted_product| %>
+          <tr>
+            <td><%= carted_product.product.name %></td>
+            <td><%= carted_product.quantity %></td>
+            <td><%= number_to_currency(carted_product.product.price) %></td>
+            <td><%= link_to "Remove Product(s)", "/carted_products/#{carted_product.id}", method: :delete %></td>
+          </tr>
+        <% end %>
+    </table>
+    <%= link_to "Confirm and Buy", "orders/#{@order.id}", method: :patch  %>
+  </div>
+</div>

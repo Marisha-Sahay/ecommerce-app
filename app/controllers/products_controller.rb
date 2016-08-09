@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+before_action :authenticate_admin!, except: [:index,:show,:search]
 
   def index
     if params[:sort]

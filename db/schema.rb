@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805023922) do
+ActiveRecord::Schema.define(version: 20160809014107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carted_products", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "quantity",   default: 0
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -37,13 +45,12 @@ ActiveRecord::Schema.define(version: 20160805023922) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "product_id"
     t.decimal  "subtotal",   precision: 5, scale: 2
-    t.integer  "quantity"
     t.decimal  "tax",        precision: 5, scale: 2
     t.decimal  "total",      precision: 5, scale: 2
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.boolean  "complete",                           default: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -69,8 +76,9 @@ ActiveRecord::Schema.define(version: 20160805023922) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "admin",           default: false
   end
 
 end

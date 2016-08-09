@@ -1,16 +1,27 @@
-<h1>Welcome and move out in style</h1>
-<h3> Order Details </h3>
-<% if @order.product.images.first%>
-<img src="<%=@order.product.images.first.url%>"" class="img-thumbnail" style="width:10em; height:10em;">
-<%end%>
-<ul>
-  <li>Order #:<%= @order.id %></li>
-  <li>Ordered At: <%= human_date_and_time(@order.created_at) %></li>
-  <li>Name: <%=@order.product.name%></li>
-  <li>Description: <%=@order.product.description%></li>
-  <li>Quantity: <%=@order.quantity%></li>
-  <li>Subtotal: <%=number_to_currency(@order.subtotal)%></li>
-  <li>Tax: <%=number_to_currency(@order.tax)%></li>
-  <li>Total: <%=number_to_currency(@order.total)%></li>
-  <li>Email: <%=@order.user.email%>
-</ul>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <table class="table info-background">
+        <tr>
+          <th>Product Name</th>
+          <th>Image</th>
+          <th>Quantity</th>
+          <th>Price Per Product</th>
+        </tr>
+          <% @order.carted_products.each do |carted_product| %>
+            <tr>
+              <td><%= carted_product.product.name %></td>
+              <td> <img class=width="200" height="200" src="<%= carted_product.product.images.first.url if carted_product.product.images.any? %>"> </td>
+              <td><%= carted_product.quantity %></td>
+              <td><%= number_to_currency(carted_product.product.price) %></td>
+            </tr>
+          <% end %>
+      </table>
+      <ul>
+        <li>Subtotal: <%= number_to_currency(@order.subtotal) %></li>
+        <li>Tax: <%= number_to_currency(@order.tax) %></li>
+        <li>Total: <%= number_to_currency(@order.total) %></li>
+      </ul>
+    </div>
+
+  </div>

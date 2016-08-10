@@ -1,7 +1,8 @@
 class CartedProductsController < ApplicationController
+
 def index
     @order = current_user.orders.find_by(complete: false)
-    if !@order ||  !@order.carted_products
+    if !@order || !@order.carted_products
       flash[:info] = "You don't have any items in your cart."
       redirect_to "/"
     end
@@ -14,6 +15,7 @@ def index
     carted_product = CartedProduct.new(product_id: params[:product_id], quantity: params[:quantity], order_id: order.id)
     if carted_product.save
       flash[:success] = "Item added to shopping cart."
+      session[:cart_count] = nil
       redirect_to "/carted_products"
     else
       flash[:danger] = "Product not added. Something went wrong."
@@ -28,7 +30,9 @@ def index
   def destroy
     carted_product = CartedProduct.find_by(id: params[:id]).destroy
     flash[:warning] = "You removed #{carted_product.product.name} from your shopping cart!"
+    session[:cart_count] = nil
     redirect_to "/carted_products"
   end
+  
 
 end

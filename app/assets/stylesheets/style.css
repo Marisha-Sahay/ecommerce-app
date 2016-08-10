@@ -87,3 +87,7 @@ class="navbar-text"
 .discount_item{
   color: red;
 }
+
+ul .error{
+  color: red;
+}

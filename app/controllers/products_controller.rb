@@ -23,6 +23,7 @@ before_action :authenticate_admin!, except: [:index,:show,:search]
   end
 
   def new
+    @product = Product.new
   end
 
   def create
@@ -31,17 +32,17 @@ before_action :authenticate_admin!, except: [:index,:show,:search]
     description = params[:description]
     image_url = params[:image]
     size = params[:size]
-    product = Product.new(name: name, price: price, description: description, supplier_id: params[:supplier][:supplier_id],size: size)
-    binding.pry
-    if product.save
+    @product = Product.new(name: name, price: price, description: description, supplier_id: params[:supplier][:supplier_id],size: size)
+    # binding.pry
+    if @product.save
       image = Image.new(product_id: product.id, url: image_url)
       image.save
+      flash[:success] = "Product Created!!!!!"
     redirect_to "/products/#{product.id}"
     else
       flash[:danger] = "Product not created!!!!!"
-      redirect_to "products/new"
+      render 'new'
     end
-    flash[:success] = "Product Created!!!!!"
   end
 
   def edit

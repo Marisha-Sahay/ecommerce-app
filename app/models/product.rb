@@ -5,6 +5,9 @@ has_many :categorized_products
 has_many :categories, through: :categorized_products
 has_many :carted_products
 has_many :orders, through: :carted_products
+validates :name, presence: true
+validates_numericality_of :price, :greater_than => 0, :less_than => 10000    
+validates_format_of :price, :with => /\A\d+(?:\.\d{0,2})?\z/
 
 TAXRATE = 0.09
 

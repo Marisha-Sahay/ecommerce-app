@@ -17,6 +17,8 @@
           </tr>
         <% end %>
     </table>
+    <% if @order.carted_products.any? %>
     <%= link_to "Confirm and Buy", "orders/#{@order.id}", method: :patch  %>
+    <% end %>
   </div>
 </div>
